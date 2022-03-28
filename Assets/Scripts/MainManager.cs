@@ -13,6 +13,7 @@ public class MainManager : MonoBehaviour
     public Text ScoreText;
     public GameObject GameOverText;
     public GameObject BackButton;
+    public Text highScoreText;
     
     private bool m_Started = false;
     private int m_Points;
@@ -24,7 +25,8 @@ public class MainManager : MonoBehaviour
     {
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
-        
+        highScoreText.text = "Highscore - " + DataManager.instance.highScoreUserName + ": " + DataManager.instance.highScore;
+
         int[] pointCountArray = new [] {1,1,2,2,5,5};
         for (int i = 0; i < LineCount; ++i)
         {
