@@ -12,13 +12,13 @@ public class MainManager : MonoBehaviour
 
     public Text ScoreText;
     public GameObject GameOverText;
+    public GameObject BackButton;
     
     private bool m_Started = false;
     private int m_Points;
     
     private bool m_GameOver = false;
 
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -72,5 +72,15 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+        BackButton.SetActive(true);
+        if (m_Points > DataManager.instance.highScore)
+        {
+            DataManager.instance.SaveHighScore(m_Points);
+        }
+    }
+
+    public void BackButtonClicked()
+    {
+        SceneManager.LoadScene(0);
     }
 }
